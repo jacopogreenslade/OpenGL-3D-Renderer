@@ -13,6 +13,20 @@ bool GLLogCall(const char* function, const char* file, int line) {
 	return true;
 }
 
-void Renderer::Draw(const VertexArray& va, const IndexBuffer&, const Shader& shader) const {
+void Renderer::Clear() const
+{
+	/* Clear Screen*/
+	GLCall(glClear(GL_COLOR_BUFFER_BIT));
+}
 
+void Renderer::Draw(const VertexArray& vertexArray, const IndexBuffer& indexBuffer, const Shader& shader) const {
+	/* Bind all*/
+	shader.Bind();
+	vertexArray.Bind();
+	indexBuffer.Bind();
+
+	/*	Draw the triangle
+			NOTE: you may want to change the unsigned int type
+	*/
+	GLCall(glDrawElements(GL_TRIANGLES, indexBuffer.GetCount(), GL_UNSIGNED_INT, nullptr));
 }
