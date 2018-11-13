@@ -8,4 +8,8 @@ Currently, the 3D Math code is not connected to the OpenGL renderer so all we ca
 
 
 
-Using stb_image by Sean Barret (Nothings). Thanks for the library!
+Externals and thanks
+
+* Using stb_image by Sean Barret (Nothings). Thanks for the library!
+* Using imgui GUI for c++ from ocornut. Thanks. 
+* Using OpenGL Mathematics - GLM. Thanks! 
