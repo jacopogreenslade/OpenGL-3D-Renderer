@@ -104,6 +104,9 @@ void Shader::Unbind() const
 
 void Shader::SetUniform1i(const std::string& name, int value)
 {
+	// Temporarily removed GLCall to avoid 1282 error breakpoint
+	//glUniform1i(GetUniformLocation(name), value);
+
 	GLCall(glUniform1i(GetUniformLocation(name), value));
 }
 
@@ -111,6 +114,12 @@ void Shader::SetUniform1i(const std::string& name, int value)
 void Shader::SetUniform4f(const std::string& name, float v0, float v1, float v2, float v3)
 {
 	GLCall(glUniform4f(GetUniformLocation(name), v0, v1, v2, v3));
+}
+
+void Shader::SetUniformMat4f(const std::string & name, const glm::mat4& matrix)
+{
+	/*&matrix[0][0] is the address of the first element*/
+	GLCall(glUniformMatrix4fv(GetUniformLocation(name), 1, GL_FALSE, &matrix[0][0]));
 }
 
 int Shader::GetUniformLocation(const std::string& name)
@@ -121,6 +130,8 @@ int Shader::GetUniformLocation(const std::string& name)
 	GLCall(int location = glGetUniformLocation(m_RendererID, name.c_str()));
 	if (location == -1)
 		std::cout << "Warning: Uniform " << name.c_str() << " doesnt exist!" << std::endl;
+
+	std::cout << "INFO: Uniform " << name.c_str() << " has location "<< location << std::endl;
 
 	m_UniformLocationCache[name] = location;
 	return location;
