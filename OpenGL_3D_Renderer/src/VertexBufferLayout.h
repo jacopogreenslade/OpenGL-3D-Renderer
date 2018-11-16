@@ -36,20 +36,20 @@ public:
 	template<>
 	void Push<float>(unsigned int count) {
 		m_Elements.push_back({GL_FLOAT, count, GL_FALSE});
-		m_Stride += VertexBufferElement::GetSizeOfType(GL_FLOAT) * count; // temporarily hard coded
+		m_Stride += VertexBufferElement::GetSizeOfType(GL_FLOAT) * count;
 	}
 
 	template<>
 	void Push<unsigned int>(unsigned int count) {
 		m_Elements.push_back({ GL_UNSIGNED_INT, count, GL_FALSE });		
-		m_Stride += VertexBufferElement::GetSizeOfType(GL_UNSIGNED_INT) * count; // temporarily hard coded
+		m_Stride += VertexBufferElement::GetSizeOfType(GL_UNSIGNED_INT) * count;
 	}
 
 	template<>
 	void Push<unsigned char>(unsigned int count) {
 		/*A char is of size 1 byte*/
 		m_Elements.push_back({ GL_UNSIGNED_BYTE, count, GL_TRUE });
-		m_Stride += VertexBufferElement::GetSizeOfType(GL_UNSIGNED_BYTE) * count; // temporarily hard coded
+		m_Stride += VertexBufferElement::GetSizeOfType(GL_UNSIGNED_BYTE) * count;
 
 
 	}

@@ -2,6 +2,8 @@
 #include "Renderer.h"
 #include "VertexBufferLayout.h"
 
+#include <iostream>
+
 VertexArray::VertexArray()
 {
 	GLCall(glGenVertexArrays(1, &m_RendererID));
@@ -30,6 +32,9 @@ void VertexArray::AddBuffer(const VertexBuffer & vb, VertexBufferLayout layout)
 	unsigned int offset = 0;
 	for (unsigned int i = 0; i < elements.size(); i++) {
 		const auto& element = elements[i];
+
+		std::cout << "Element " << i << " is type " << element.type << "" << std::endl;
+		
 		/* Enable Attribute*/
 		GLCall(glEnableVertexAttribArray(i));
 		/*Attributes are set per vertex*/
