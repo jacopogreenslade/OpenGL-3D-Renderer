@@ -7,10 +7,12 @@ layout(location = 1) in vec2 texCoord;
 out vec2 v_TexCoord;
 
 uniform mat4 u_MVP;
+uniform mat4 u_rot;
 
 void main() 
 {
-	gl_Position = u_MVP * position;
+	
+	gl_Position = u_MVP * u_rot * position;
 	v_TexCoord = texCoord;
 };
 
@@ -28,5 +30,4 @@ void main()
 {
 	vec4 texColor = texture(u_Texture, v_TexCoord);
 	color = texColor;
-	color = u_Color;
 };
