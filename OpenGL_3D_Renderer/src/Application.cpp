@@ -81,7 +81,7 @@ static glm::mat4 Translate(float x, float y, float z) {
 }
 
 glm::vec3 lightColor = glm::vec3(1.0f, 1.0f, 1.0f);
-glm::vec3 lightPosition = glm::vec3(-4.0f, 1.0f, -3.0f);
+glm::vec3 lightPosition = glm::vec3(-0.5f, 2.0f, 0.6f);
 
 glm::vec3 cubePosition = glm::vec3(0.0f, 2.0f, 0.0f);
 
@@ -336,6 +336,7 @@ int main(void)
 			lightingShader.SetUniformMat4f("model", glm::translate(glm::mat4(), cubePosition)); // Model
 			lightingShader.SetUniform4f("u_Color", 0.8f, 0.3f, 0.8f, 1.0f);
 			lightingShader.SetUniformVec3("lightPosition", lightPosition);
+			lightingShader.SetUniformVec3("viewPosition", camera.Position);
 			// This takes care of binding the VAO and IBO
 			renderer.Draw(cubeVAO, ib, lightingShader);
 

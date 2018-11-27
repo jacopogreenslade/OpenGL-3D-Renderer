@@ -33,19 +33,32 @@ uniform vec3 objectColor;
 uniform vec4 u_Color;
 
 uniform vec3 lightPosition;
+uniform vec3 viewPosition;
 
 void main()
 {
+	// Ambient
 	float ambientIntencity = 0.2f;
 	vec3 ambient = ambientIntencity * lightColor;
-
+	
+	// Diffuse
 	vec3 normalizedNormal = normalize(v_Normal);
 	vec3 lightDirection = normalize(lightPosition - v_FragmentPosition);
-	
+
 	float diff = max(dot(normalizedNormal, lightDirection), 0.0);
 	vec3 diffuse = diff * lightColor;
 
+	// Specularity
+	float specularIntensity = 0.8f;
+
+	vec3 viewDirection = normalize(viewPosition - v_FragmentPosition);
+	// Reflect the light directiona around the normal
+	vec3 reflectedLightDirection = reflect(-lightDirection, normalizedNormal);
+	// For normalized values [0, 1] the higher the power it is raised to the smaller the result;
+	// The greater the shine the more diffused the specularity is.
+	float shine = pow(max(dot(viewDirection, reflectedLightDirection), 0.0), 32);
+	vec3 specular = specularIntensity * shine * lightColor;
 	
-	vec3 result = (ambient + diffuse) * objectColor;
+	vec3 result = (ambient + diffuse + specular) * objectColor;
 	color = vec4(result, 1.0f);
 };

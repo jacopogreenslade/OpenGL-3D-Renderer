@@ -1,7 +1,5 @@
-﻿  Renderer.cpp
-  Application.cpp
+﻿  Application.cpp
 c:\users\jacopo greenslade\source\repos\opengl_3d_renderer\opengl_3d_renderer\src\objectimporter.h(20): warning C4091: 'static ': ignored on left of 'ObjectImporter' when no variable is declared
-c:\users\jacopo greenslade\source\repos\opengl_3d_renderer\opengl_3d_renderer\src\application.cpp(248): warning C4018: '<': signed/unsigned mismatch
-c:\users\jacopo greenslade\source\repos\opengl_3d_renderer\opengl_3d_renderer\src\application.cpp(318): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-  Generating Code...
+c:\users\jacopo greenslade\source\repos\opengl_3d_renderer\opengl_3d_renderer\src\application.cpp(255): warning C4018: '<': signed/unsigned mismatch
+c:\users\jacopo greenslade\source\repos\opengl_3d_renderer\opengl_3d_renderer\src\application.cpp(325): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
   OpenGL_3D_Renderer.vcxproj -> C:\Users\Jacopo Greenslade\source\repos\OpenGL_3D_Renderer\Debug\OpenGL_3D_Renderer.exe
