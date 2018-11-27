@@ -16,7 +16,7 @@ bool GLLogCall(const char* function, const char* file, int line) {
 void Renderer::Clear() const
 {
 	/* Clear Screen*/
-	GLCall(glClear(GL_COLOR_BUFFER_BIT));
+	GLCall(glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT));
 }
 
 void Renderer::Draw(const VertexArray& vertexArray, const IndexBuffer& indexBuffer, const Shader& shader) const {
@@ -29,4 +29,6 @@ void Renderer::Draw(const VertexArray& vertexArray, const IndexBuffer& indexBuff
 			NOTE: you may want to change the unsigned int type
 	*/
 	GLCall(glDrawElements(GL_TRIANGLES, indexBuffer.GetCount(), GL_UNSIGNED_INT, nullptr));
+	//GLCall(glDrawArrays(GL_TRIANGLES, 0, 8));
+
 }

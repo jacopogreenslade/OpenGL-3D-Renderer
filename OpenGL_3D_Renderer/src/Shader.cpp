@@ -116,6 +116,18 @@ void Shader::SetUniform4f(const std::string& name, float v0, float v1, float v2,
 	GLCall(glUniform4f(GetUniformLocation(name), v0, v1, v2, v3));
 }
 
+/*Uniforms are set per draw. Must be after the shaders are set.*/
+void Shader::SetUniformVec3(const std::string& name, glm::vec3 v)
+{
+	GLCall(glUniform3fv(GetUniformLocation(name), 1, &v[0]));
+}
+
+/*Uniforms are set per draw. Must be after the shaders are set.*/
+void Shader::SetUniformVec4(const std::string& name, glm::vec4 v)
+{
+	GLCall(glUniform4fv(GetUniformLocation(name), 1, &v[0]));
+}
+
 void Shader::SetUniformMat4f(const std::string & name, const glm::mat4& matrix)
 {
 	/*&matrix[0][0] is the address of the first element*/

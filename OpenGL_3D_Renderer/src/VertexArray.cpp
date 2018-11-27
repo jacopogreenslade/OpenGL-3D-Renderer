@@ -40,10 +40,10 @@ void VertexArray::AddBuffer(const VertexBuffer & vb, VertexBufferLayout layout)
 		/*Attributes are set per vertex*/
 		/* Super convoluted function to create an attribute for the position*/
 		GLCall(glVertexAttribPointer(i, 
-			element.count, 
+			element.count,
 			element.type,
-			element.normalized, 
-			layout.GetStride(), 
+			element.normalized,
+			layout.GetStride(),
 			(const void*) offset));
 		/* Increment offset by elemnet count*/
 		offset += element.count * VertexBufferElement::GetSizeOfType(element.type);

@@ -3,6 +3,7 @@
 #include <vector>
 #include <GL/glew.h>
 #include "Renderer.h"
+#include "Mesh.h"
 
 struct VertexBufferElement {
 	unsigned int type;
@@ -28,6 +29,10 @@ private:
 public:
 	VertexBufferLayout() : m_Stride(0) {};
 
+	void SetStride(unsigned int stride) {
+		m_Stride = stride;
+	}
+
 	template<typename T>
 	void Push(unsigned int count) {
 		static_assert(false);
@@ -50,9 +55,15 @@ public:
 		/*A char is of size 1 byte*/
 		m_Elements.push_back({ GL_UNSIGNED_BYTE, count, GL_TRUE });
 		m_Stride += VertexBufferElement::GetSizeOfType(GL_UNSIGNED_BYTE) * count;
-
-
 	}
+	
+	template<>
+		void Push<Vertex>(unsigned int count) {
+			/*A char is of size 1 byte*/
+			m_Elements.push_back({ GL_FLOAT, count, GL_FALSE });
+			m_Stride += sizeof(Vertex);
+		}
+
 	inline const std::vector<VertexBufferElement> GetElements() const { return m_Elements; }
 	inline unsigned int GetStride() const { return m_Stride; }
 };
